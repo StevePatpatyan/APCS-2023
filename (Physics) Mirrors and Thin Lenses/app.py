@@ -36,13 +36,19 @@ def conMirror():
     objDistNum = 10
     objDistBox = Rectangle(Point(5, 5), Point(105, 55))
     objDistText = Text(Point(55, 30), objDistNum)
+    objDistDownBox = Rectangle(Point(5,60),Point(55,85))
+    objDistUpBox = Rectangle(Point(55,60),Point(105,85))
     imgDistNum = -15
     imgDistBox = Rectangle(Point(110, 5), Point(210, 55))
     imgDistText = Text(Point(160, 30), imgDistNum)
+    imgDistDownBox = Rectangle(Point(110,60),Point(160,85))
+    imgDistUpBox = Rectangle(Point(160,60),Point(210,85))
     focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-    focDistNum = 1 / focDistNum
+    focDistNum = round(1 / focDistNum,3)
     focDistBox = Rectangle(Point(215, 5), Point(315, 55))
     focDistText = Text(Point(265, 30), focDistNum)
+    focDistDownBox = Rectangle(Point(215,60),Point(265,85))
+    focDistUpBox = Rectangle(Point(265,60),Point(315,85))
     marks = []
     xMark = 0
     while xMark <= 1000:
@@ -53,26 +59,65 @@ def conMirror():
     axis.draw(win)
     objDistBox.draw(win)
     objDistText.draw(win)
+    objDistDownBox.draw(win)
+    objDistDownBox.setFill("red")
+    objDistUpBox.draw(win)
+    objDistUpBox.setFill("green")
     imgDistBox.draw(win)
     imgDistText.draw(win)
+    imgDistDownBox.draw(win)
+    imgDistDownBox.setFill("red")
+    imgDistUpBox.draw(win)
+    imgDistUpBox.setFill("green")
     focDistBox.draw(win)
     focDistText.draw(win)
+    focDistDownBox.draw(win)
+    focDistDownBox.setFill("red")
+    focDistUpBox.draw(win)
+    focDistUpBox.setFill("green")
     for mark in marks:
         mark.draw(win)
     while True:
         click = win.getMouse()
-        if pointIn(click, objDistBox):
+        if pointIn(click, objDistDownBox):
+            objDistNum -= 1
+            imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+            imgDistNum = 1 / imgDistNum
+            focDistNum = (1 / objDistNum) + (1 / imgDistNum)
+            focDistNum = round(1 / focDistNum,3)
+        elif pointIn(click, objDistUpBox):
             objDistNum += 1
-        elif pointIn(click, imgDistBox):
+            imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+            imgDistNum = 1 / imgDistNum
+            focDistNum = (1 / objDistNum) + (1 / imgDistNum)
+            focDistNum = round(1 / focDistNum,3)
+        elif pointIn(click, imgDistDownBox):
+            imgDistNum -= 1
+            objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+            objDistNum = 1 / objDistNum
+            focDistNum = (1 / objDistNum) + (1 / imgDistNum)
+            focDistNum = round(1 / focDistNum,3)
+        elif pointIn(click, imgDistUpBox):
             imgDistNum += 1
-        elif pointIn(click, focDistBox):
+            objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+            objDistNum = 1 / objDistNum
+            focDistNum = (1 / objDistNum) + (1 / imgDistNum)
+            focDistNum = round(1 / focDistNum,3)
+        elif pointIn(click, focDistDownBox):
+            focDistNum -= 1
+            objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+            objDistNum = 1 / objDistNum
+            imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+            imgDistNum = 1 / imgDistNum
+        elif pointIn(click, focDistUpBox):
             focDistNum += 1
-        objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-        objDistNum = 1 / objDistNum
-        imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-        imgDistNum = 1 / imgDistNum
-        focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-        focDistNum = 1 / focDistNum
+            objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+            objDistNum = 1 / objDistNum
+            imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+            imgDistNum = 1 / imgDistNum
+        objDistNum = round(objDistNum,3)
+        imgDistNum = round(imgDistNum,3)
+        focDistNum = round(focDistNum,3)
         objDistText.undraw()
         objDistText = Text(Point(55, 30), objDistNum)
         objDistText.draw(win)
