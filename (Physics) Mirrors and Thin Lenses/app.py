@@ -31,7 +31,9 @@ def pointIn(p, rect):
 
 def conMirror():
     win = GraphWin("Converging Mirror", 1000, 1000)
-    mirror = Oval(Point(475, 400), Point(525, 600))
+    win.setBackground("white")
+    mirror = Oval(Point(500, 400), Point(600, 600))
+    whiteOut = Oval(Point(525,400),Point(600,600))
     axis = Line(Point(0, 500), Point(1000, 500))
     objDistNum = 10
     objDistBox = Rectangle(Point(5, 5), Point(105, 55))
@@ -52,10 +54,13 @@ def conMirror():
     marks = []
     xMark = 0
     while xMark <= 1000:
-        if xMark > 525 or xMark < 475:
+        if xMark > 500 or xMark < 500:
             marks.append(Line(Point(xMark, 490), Point(xMark, 510)))
         xMark += 10
     mirror.draw(win)
+    whiteOut.setOutline("white")
+    whiteOut.setFill("white")
+    whiteOut.draw(win)
     axis.draw(win)
     objDistBox.draw(win)
     objDistText.draw(win)
