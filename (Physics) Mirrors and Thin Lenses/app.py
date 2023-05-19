@@ -68,6 +68,8 @@ def conMirror():
     magText = Text(Point(580, 30), magNum)
     magDownBox = Rectangle(Point(530,60),Point(580,85))
     magUpBox = Rectangle(Point(580,60),Point(630,85))
+    focPointLeft = Circle(Point(500-focDistNum,500),5)
+    focPointRight = Circle(Point(500+focDistNum,500),5)
     marks = []
     xMark = 0
     while xMark <= 1000:
@@ -115,6 +117,16 @@ def conMirror():
     magDownBox.setFill("red")
     magUpBox.draw(win)
     magUpBox.setFill("green")
+    focPointLeft.draw(win)
+    focPointLeft.setFill("black")
+    focPointRight.draw(win)
+    focPointRight.setFill("black")
+    obj = Line(Point(500-objDistNum,500),Point(500-objDistNum,500+objHeightNum))
+    obj.setFill("blue")
+    obj.draw(win)
+    img = Line(Point(500-imgDistNum,500),Point(500-imgDistNum,500+imgHeightNum))
+    img.setFill("red")
+    img.draw(win)
     for mark in marks:
         mark.draw(win)
     while True:
@@ -177,7 +189,7 @@ def conMirror():
         imgDistNum = round(imgDistNum,3)
         focDistNum = round(focDistNum,3)
         objHeightNum = round(objHeightNum,3)
-        imgDistNum = round(imgHeightNum,3)
+        imgHeightNum = round(imgHeightNum,3)
         magNum = round(magNum,3)
         objDistText.undraw()
         objDistText = Text(Point(55, 30), objDistNum)
@@ -197,6 +209,22 @@ def conMirror():
         magText.undraw()
         magText = Text(Point(580, 30), magNum)
         magText.draw(win)
+        focPointLeft.undraw()
+        focPointLeft = Circle(Point(500-focDistNum,500),5)
+        focPointLeft.draw(win)
+        focPointLeft.setFill("black")
+        focPointRight.undraw()
+        focPointRight = Circle(Point(500+focDistNum,500),5)
+        focPointRight.draw(win)
+        focPointRight.setFill("black")
+        obj.undraw()
+        obj = Line(Point(500-objDistNum,500),Point(500-objDistNum,500+objHeightNum))
+        obj.setFill("blue")
+        obj.draw(win)
+        img.undraw()
+        img = Line(Point(500-imgDistNum,500),Point(500-imgDistNum,500+imgHeightNum))
+        img.setFill("red")
+        img.draw(win)
 
 
 main()
