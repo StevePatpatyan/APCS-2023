@@ -51,6 +51,23 @@ def conMirror():
     focDistText = Text(Point(265, 30), focDistNum)
     focDistDownBox = Rectangle(Point(215,60),Point(265,85))
     focDistUpBox = Rectangle(Point(265,60),Point(315,85))
+    objHeightNum = 5
+    objHeightBox = Rectangle(Point(320, 5), Point(420, 55))
+    objHeightText = Text(Point(370, 30), objHeightNum)
+    objHeightDownBox = Rectangle(Point(320,60),Point(370,85))
+    objHeightUpBox = Rectangle(Point(370,60),Point(420,85))
+    imgHeightNum = -1*imgDistNum*objHeightNum/objDistNum
+    imgHeightNum = round(imgHeightNum,3)
+    imgHeightBox = Rectangle(Point(425, 5), Point(525, 55))
+    imgHeightText = Text(Point(475, 30), imgHeightNum)
+    imgHeightDownBox = Rectangle(Point(425,60),Point(475,85))
+    imgHeightUpBox = Rectangle(Point(475,60),Point(525,85))
+    magNum = -1*imgDistNum/objDistNum
+    magNum = round(magNum,3)
+    magBox = Rectangle(Point(530, 5), Point(630, 55))
+    magText = Text(Point(580, 30), magNum)
+    magDownBox = Rectangle(Point(530,60),Point(580,85))
+    magUpBox = Rectangle(Point(580,60),Point(630,85))
     marks = []
     xMark = 0
     while xMark <= 1000:
@@ -80,6 +97,24 @@ def conMirror():
     focDistDownBox.setFill("red")
     focDistUpBox.draw(win)
     focDistUpBox.setFill("green")
+    objHeightBox.draw(win)
+    objHeightText.draw(win)
+    objHeightDownBox.draw(win)
+    objHeightDownBox.setFill("red")
+    objHeightUpBox.draw(win)
+    objHeightUpBox.setFill("green")
+    imgHeightBox.draw(win)
+    imgHeightText.draw(win)
+    imgHeightDownBox.draw(win)
+    imgHeightDownBox.setFill("red")
+    imgHeightUpBox.draw(win)
+    imgHeightUpBox.setFill("green")
+    magBox.draw(win)
+    magText.draw(win)
+    magDownBox.draw(win)
+    magDownBox.setFill("red")
+    magUpBox.draw(win)
+    magUpBox.setFill("green")
     for mark in marks:
         mark.draw(win)
     while True:
@@ -118,11 +153,32 @@ def conMirror():
             focDistNum += 1
             objDistNum = (1 / focDistNum) - (1 / imgDistNum)
             objDistNum = 1 / objDistNum
-            imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-            imgDistNum = 1 / imgDistNum
+            imgDistNum =  (1 / focDistNum) - (1 / objDistNum)
+            imgDistNum = 1/ imgDistNum
+        elif pointIn(click, objHeightDownBox):
+            objHeightNum -= 1
+            imgHeightNum = magNum*objHeightNum
+        elif pointIn(click, objHeightUpBox):
+            objHeightNum += 1
+            imgHeightNum = magNum*objHeightNum
+        elif pointIn(click, imgHeightDownBox):
+            imgHeightNum -= 1
+            objHeightNum = imgHeightNum/magNum
+        elif pointIn(click, imgHeightUpBox):
+            imgHeightNum += 1
+            objHeightNum = imgHeightNum/magNum
+        elif pointIn(click, magDownBox):
+            magNum -= 1
+            imgHeightNum = magNum*objHeightNum
+        elif pointIn(click, magUpBox):
+            magNum += 1
+            imgHeightNum = magNum*objHeightNum
         objDistNum = round(objDistNum,3)
         imgDistNum = round(imgDistNum,3)
         focDistNum = round(focDistNum,3)
+        objHeightNum = round(objHeightNum,3)
+        imgDistNum = round(imgHeightNum,3)
+        magNum = round(magNum,3)
         objDistText.undraw()
         objDistText = Text(Point(55, 30), objDistNum)
         objDistText.draw(win)
@@ -132,6 +188,15 @@ def conMirror():
         focDistText.undraw()
         focDistText = Text(Point(265, 30), focDistNum)
         focDistText.draw(win)
+        objHeightText.undraw()
+        objHeightText = Text(Point(370, 30), objHeightNum)
+        objHeightText.draw(win)
+        imgHeightText.undraw()
+        imgHeightText = Text(Point(475, 30), imgHeightNum)
+        imgHeightText.draw(win)
+        magText.undraw()
+        magText = Text(Point(580, 30), magNum)
+        magText.draw(win)
 
 
 main()
