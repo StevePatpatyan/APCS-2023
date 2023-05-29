@@ -120,7 +120,11 @@ def mirrorLens():
     marks = []
     xMark = 0
     while xMark <= 1000:
-        if xMark > 500 or xMark < 500:
+        if (choice == 1 or choice == 2) and (xMark > 500 or xMark < 500):
+            marks.append(Line(Point(xMark, 490), Point(xMark, 510)))
+        elif choice == 3 and (xMark<475 or xMark>525):
+            marks.append(Line(Point(xMark, 490), Point(xMark, 510)))
+        elif choice == 4 and (xMark<475 or xMark>500):
             marks.append(Line(Point(xMark, 490), Point(xMark, 510)))
         xMark += 10
     axis.draw(win)
