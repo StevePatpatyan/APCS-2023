@@ -9,12 +9,6 @@ types = {
 
 
 def main():
-    print("Choose your mirror/lens: ")
-    print("1: Concave/Converging Mirror")
-    print("2: Convex/Diverging Mirror")
-    print("3: Converging Thin Lens")
-    print("4: Diverging Thin Lens")
-    # choice = int(input())
     mirrorLens()
 
 
@@ -31,16 +25,48 @@ def pointIn(p, rect):
 
 
 def mirrorLens():
+    print("Choose your mirror/lens: ")
+    print("1: Concave/Converging Mirror")
+    print("2: Convex/Diverging Mirror")
+    print("3: Converging Thin Lens")
+    print("4: Diverging Thin Lens")
+    choice = int(input())
     win = GraphWin(types[choice], 1000, 1000)
     win.setBackground("white")
-    if choice == 1 or choice == 3:
+    if choice == 1:
         mirror = Oval(Point(500, 400), Point(600, 600))
+        mirror.draw(win) 
+        whiteOut = Oval(Point(525, 400), Point(600, 600))
+        whiteOut.setOutline("white")
+        whiteOut.setFill("white")
+        whiteOut.draw(win)
     if choice == 2:
-        mirror1 = Oval(Point(400, 400), Point(450, 600))
-        mirLineTop = Line(Point(400, 400), Point(550, 400))
-        mirLineBottom = Line(Point(400, 600), Point(550, 600))
-        mirror2 = Oval(Point(550, 400), Point(600, 600))
-    whiteOut = Oval(Point(525, 400), Point(600, 600))
+        mirror = Oval(Point(400, 400), Point(500, 600))
+        mirror.draw(win) 
+        whiteOut = Oval(Point(400, 400), Point(475, 600))
+        whiteOut.setOutline("white")
+        whiteOut.setFill("white")
+        whiteOut.draw(win)
+    if choice == 3:
+        mirror = Oval(Point(475, 400), Point(525, 600))
+        mirror.draw(win) 
+    if choice == 4:
+        mirror1 = Oval(Point(450, 400), Point(475, 600))
+        whiteOut1 = Rectangle(Point(450,399),Point(465,599))
+        mirLineTop = Line(Point(465, 400), Point(510, 400))
+        mirLineBottom = Line(Point(465, 600), Point(510, 600))
+        mirror2 = Oval(Point(500, 400),Point(525, 600))
+        whiteOut2 = Rectangle(Point(510,399),Point(525,599))
+        mirror1.draw(win)
+        whiteOut1.setOutline("white")
+        whiteOut1.setFill("white")
+        whiteOut1.draw(win)
+        mirLineTop.draw(win)
+        mirLineBottom.draw(win)
+        mirror2.draw(win)
+        whiteOut2.setOutline("white")
+        whiteOut2.setFill("white")
+        whiteOut2.draw(win)
     axis = Line(Point(0, 500), Point(1000, 500))
     objDistNum = 10
     objDistBox = Rectangle(Point(5, 5), Point(105, 55))
@@ -97,10 +123,6 @@ def mirrorLens():
         if xMark > 500 or xMark < 500:
             marks.append(Line(Point(xMark, 490), Point(xMark, 510)))
         xMark += 10
-    mirror.draw(win)
-    whiteOut.setOutline("white")
-    whiteOut.setFill("white")
-    whiteOut.draw(win)
     axis.draw(win)
     objDistBox.draw(win)
     objDistText.draw(win)
