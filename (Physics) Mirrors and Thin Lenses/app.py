@@ -181,8 +181,14 @@ def mirrorLens():
             imgDistNum = (1 / focDistNum) - (1 / objDistNum)
             imgDistNum = 1 / imgDistNum
             focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if focDistNum <= 0:
+            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
                 focDistNum = 1
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
+            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
+                focDistNum = -1
                 imgDistNum = (1 / focDistNum) - (1 / objDistNum)
                 imgDistNum = 1 / imgDistNum
                 objDistNum = (1 / focDistNum) - (1 / imgDistNum)
@@ -193,8 +199,14 @@ def mirrorLens():
             imgDistNum = (1 / focDistNum) - (1 / objDistNum)
             imgDistNum = 1 / imgDistNum
             focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if focDistNum <= 0:
+            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
                 focDistNum = 1
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
+            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
+                focDistNum = -1
                 imgDistNum = (1 / focDistNum) - (1 / objDistNum)
                 imgDistNum = 1 / imgDistNum
                 objDistNum = (1 / focDistNum) - (1 / imgDistNum)
@@ -205,41 +217,64 @@ def mirrorLens():
             objDistNum = (1 / focDistNum) - (1 / imgDistNum)
             objDistNum = 1 / objDistNum
             focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if focDistNum <= 0:
+            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
                 focDistNum = 1
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
                 imgDistNum = (1 / focDistNum) - (1 / objDistNum)
                 imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
+            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
+                focDistNum = -1
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
             focDistNum = round(1 / focDistNum, 3)
         elif pointIn(click, imgDistUpBox):
             imgDistNum += 1
             objDistNum = (1 / focDistNum) - (1 / imgDistNum)
             objDistNum = 1 / objDistNum
             focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if focDistNum <= 0:
+            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
                 focDistNum = 1
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
                 imgDistNum = (1 / focDistNum) - (1 / objDistNum)
                 imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
+            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
+                focDistNum = -1
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
             focDistNum = round(1 / focDistNum, 3)
         elif pointIn(click, focDistDownBox):
             focDistNum -= 1
-            if focDistNum <= 0:
+            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
                 focDistNum = 1
-            objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-            objDistNum = 1 / objDistNum
-            imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-            imgDistNum = 1 / imgDistNum
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
+            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
+                focDistNum = -1
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
         elif pointIn(click, focDistUpBox):
-            if focDistNum <= 0:
+            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
                 focDistNum = 1
-            focDistNum += 1
-            objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-            objDistNum = 1 / objDistNum
-            imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-            imgDistNum = 1 / imgDistNum
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
+            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
+                focDistNum = -1
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
         elif pointIn(click, objHeightDownBox):
             objHeightNum -= 1
             imgHeightNum = magNum * objHeightNum
@@ -270,8 +305,14 @@ def mirrorLens():
             imgDistNum = (1 / focDistNum) - (1 / objDistNum)
             imgDistNum = 1 / imgDistNum
             focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if focDistNum <= 0:
+            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
                 focDistNum = 1
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
+            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
+                focDistNum = -1
                 imgDistNum = (1 / focDistNum) - (1 / objDistNum)
                 imgDistNum = 1 / imgDistNum
                 objDistNum = (1 / focDistNum) - (1 / imgDistNum)
@@ -289,12 +330,18 @@ def mirrorLens():
             objDistNum = (1 / focDistNum) - (1 / imgDistNum)
             objDistNum = 1 / objDistNum
             focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if focDistNum <= 0:
+            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
                 focDistNum = 1
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
                 imgDistNum = (1 / focDistNum) - (1 / objDistNum)
                 imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
+            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
+                focDistNum = -1
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
             focDistNum = round(1 / focDistNum, 3)
         elif pointIn(click, focDistBox):
             focDistText.undraw()
@@ -303,14 +350,18 @@ def mirrorLens():
                 win.checkMouse()
             win.getMouse()
             focDistNum = float(focDistEnter.getText())
-            if focDistNum <= 0:
+            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
                 focDistNum = 1
-            focDistEnter.undraw()
-            focDistText.draw(win)
-            objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-            objDistNum = 1 / objDistNum
-            imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-            imgDistNum = 1 / imgDistNum
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
+            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
+                focDistNum = -1
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
         elif pointIn(click, objHeightBox):
             objHeightText.undraw()
             objHeightEnter.draw(win)
