@@ -111,9 +111,15 @@ def mirrorLens():
         Point(500 - objDistNum * 3 - 5, 500),
         Point(500 - objDistNum * 3 + 5, 500 - objHeightNum * 3),
     )
-    img = Rectangle(
-        Point(500 - imgDistNum * 3 - 5, 500),
-        Point(500 - imgDistNum * 3 + 5, 500 - imgHeightNum * 3),
+    if choice == 1 or choice == 2:
+            img = Rectangle(
+            Point(500 - imgDistNum * 3 - 5, 500),
+            Point(500 - imgDistNum * 3 + 5, 500 - imgHeightNum * 3),
+        )
+    else:
+        img = Rectangle(
+        Point(500 + imgDistNum * 3 - 5, 500),
+        Point(500 + imgDistNum * 3 + 5, 500 - imgHeightNum * 3),
     )
     focPointLeft = Circle(Point(500 - focDistNum * 3, 500), 5)
     focPointRight = Circle(Point(500 + focDistNum * 3, 500), 5)
@@ -438,10 +444,16 @@ def mirrorLens():
         obj.setFill("blue")
         obj.draw(win)
         img.undraw()
-        img = Rectangle(
-        Point(500 - imgDistNum * 3 - 5, 500),
-        Point(500 - imgDistNum * 3 + 5, 500 - imgHeightNum * 3),
-    )
+        if choice == 1 or choice == 2:
+            img = Rectangle(
+            Point(500 - imgDistNum * 3 - 5, 500),
+            Point(500 - imgDistNum * 3 + 5, 500 - imgHeightNum * 3),
+        )
+        else:
+            img = Rectangle(
+            Point(500 + imgDistNum * 3 - 5, 500),
+            Point(500 + imgDistNum * 3 + 5, 500 - imgHeightNum * 3),
+        )
         img.setFill("red")
         img.draw(win)
 
