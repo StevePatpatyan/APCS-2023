@@ -107,13 +107,13 @@ def mirrorLens():
     magEnter = Entry(Point(580, 30), 10)
     magDownBox = Rectangle(Point(530, 60), Point(580, 85))
     magUpBox = Rectangle(Point(580, 60), Point(630, 85))
-    obj = Line(
-        Point(500 - objDistNum * 3, 500),
-        Point(500 - objDistNum * 3, 500 + objHeightNum * 3),
+    obj = Rectangle(
+        Point(500 - objDistNum * 3 - 5, 500),
+        Point(500 - objDistNum * 3 + 5, 500 - objHeightNum * 3),
     )
-    img = Line(
-        Point(500 - imgDistNum * 3, 500),
-        Point(500 - imgDistNum * 3, 500 + imgHeightNum * 3),
+    img = Rectangle(
+        Point(500 - imgDistNum * 3 - 5, 500),
+        Point(500 - imgDistNum * 3 + 5, 500 - imgHeightNum * 3),
     )
     focPointLeft = Circle(Point(500 - focDistNum * 3, 500), 5)
     focPointRight = Circle(Point(500 + focDistNum * 3, 500), 5)
@@ -431,17 +431,17 @@ def mirrorLens():
         focPointRight.draw(win)
         focPointRight.setFill("black")
         obj.undraw()
-        obj = Line(
-            Point(500 - objDistNum * 3, 500),
-            Point(500 - objDistNum * 3, 500 + objHeightNum * 3),
-        )
+        obj = Rectangle(
+        Point(500 - objDistNum * 3 - 5, 500),
+        Point(500 - objDistNum * 3 + 5, 500 - objHeightNum * 3),
+    )
         obj.setFill("blue")
         obj.draw(win)
         img.undraw()
-        img = Line(
-            Point(500 - imgDistNum * 3, 500),
-            Point(500 - imgDistNum * 3, 500 + imgHeightNum * 3),
-        )
+        img = Rectangle(
+        Point(500 - imgDistNum * 3 - 5, 500),
+        Point(500 - imgDistNum * 3 + 5, 500 - imgHeightNum * 3),
+    )
         img.setFill("red")
         img.draw(win)
 
