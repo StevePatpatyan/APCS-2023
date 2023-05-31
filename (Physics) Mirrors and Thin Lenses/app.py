@@ -91,7 +91,7 @@ def mirrorLens():
     imgDistNum = round(1 / imgDistNum, 3)
     imgDistBox = Rectangle(Point(110, 5), Point(210, 55))
     imgDistText = Text(Point(160, 30), imgDistNum)
-    imgDistEnter = Entry(Point(160, 30), 10)
+    imgDistEnter = Entry(Point(160, 30), 10)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
     imgDistDownBox = Rectangle(Point(110, 60), Point(160, 85))
     imgDistUpBox = Rectangle(Point(160, 60), Point(210, 85))
     imgDistTitle = Text(Point(160,100),"q")
