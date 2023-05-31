@@ -33,6 +33,8 @@ def mirrorLens():
     choice = int(input())
     win = GraphWin(types[choice], 1000, 1000)
     win.setBackground("white")
+    invalText = Text(Point(500,120),"Invalid Value Inputted")
+    invalText.setTextColor("red")
     if choice == 1:
         mirror = Oval(Point(500, 400), Point(600, 600))
         mirror.draw(win) 
@@ -195,221 +197,210 @@ def mirrorLens():
     while True:
         click = win.getMouse()
         if pointIn(click, objDistDownBox):
-            objDistNum -= 1
-            imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-            imgDistNum = 1 / imgDistNum
-            focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
-                focDistNum = 1
+            if objDistNum - 1 <= 0:
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                objDistNum -= 1
                 imgDistNum = (1 / focDistNum) - (1 / objDistNum)
                 imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
-                focDistNum = -1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            focDistNum = round(1 / focDistNum, 3)
+                focDistNum = (1 / objDistNum) + (1 / imgDistNum)
         elif pointIn(click, objDistUpBox):
             objDistNum += 1
             imgDistNum = (1 / focDistNum) - (1 / objDistNum)
             imgDistNum = 1 / imgDistNum
             focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
-                focDistNum = 1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
-                focDistNum = -1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            focDistNum = round(1 / focDistNum, 3)
         elif pointIn(click, imgDistDownBox):
-            imgDistNum -= 1
-            objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-            objDistNum = 1 / objDistNum
-            focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
-                focDistNum = 1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
+            if (1 / focDistNum) - (1 / (imgDistNum - 1) <= 0):
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                imgDistNum -= 1
                 objDistNum = (1 / focDistNum) - (1 / imgDistNum)
                 objDistNum = 1 / objDistNum
-            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
-                focDistNum = -1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            focDistNum = round(1 / focDistNum, 3)
+                focDistNum = (1 / objDistNum) + (1 / imgDistNum)
         elif pointIn(click, imgDistUpBox):
-            imgDistNum += 1
-            objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-            objDistNum = 1 / objDistNum
-            focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
-                focDistNum = 1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
+            if (1 / focDistNum) - (1 / (imgDistNum + 1) <= 0):
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                imgDistNum += 1
                 objDistNum = (1 / focDistNum) - (1 / imgDistNum)
                 objDistNum = 1 / objDistNum
-            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
-                focDistNum = -1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            focDistNum = round(1 / focDistNum, 3)
+                focDistNum = (1 / objDistNum) + (1 / imgDistNum)
         elif pointIn(click, focDistDownBox):
-            focDistNum -= 1
-            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
-                focDistNum = 1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
-                focDistNum = -1
+            if ((focDistNum - 1 <= 0 and (choice == 1 or choice == 3)) or (focDistNum - 1 >= 0 and (choice == 2 or choice == 4))):
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                focDistNum -=1
                 imgDistNum = (1 / focDistNum) - (1 / objDistNum)
                 imgDistNum = 1 / imgDistNum
                 objDistNum = (1 / focDistNum) - (1 / imgDistNum)
                 objDistNum = 1 / objDistNum
         elif pointIn(click, focDistUpBox):
-            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
-                focDistNum = 1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
-                focDistNum = -1
+            if ((focDistNum + 1 <= 0 and (choice == 1 or choice == 3)) or (focDistNum + 1 >= 0 and (choice == 2 or choice == 4))):
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                focDistNum += 1
                 imgDistNum = (1 / focDistNum) - (1 / objDistNum)
                 imgDistNum = 1 / imgDistNum
                 objDistNum = (1 / focDistNum) - (1 / imgDistNum)
                 objDistNum = 1 / objDistNum
         elif pointIn(click, objHeightDownBox):
-            objHeightNum -= 1
-            imgHeightNum = magNum * objHeightNum
+            if objHeightNum - 1 <= 0:
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                objHeightNum -= 1
+                imgHeightNum = magNum * objHeightNum
         elif pointIn(click, objHeightUpBox):
             objHeightNum += 1
+            if objHeightNum <= 0:
+                objHeightNum = 1
             imgHeightNum = magNum * objHeightNum
         elif pointIn(click, imgHeightDownBox):
-            imgHeightNum -= 1
-            objHeightNum = imgHeightNum / magNum
+            if (imgHeightNum -1) / magNum <= 0 or imgHeightNum -1 == 0:
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:    
+                imgHeightNum -= 1
+                objHeightNum = imgHeightNum / magNum
         elif pointIn(click, imgHeightUpBox):
-            imgHeightNum += 1
-            objHeightNum = imgHeightNum / magNum
+            if (imgHeightNum +1) / magNum <= 0 or imgHeightNum + 1 == 0:
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                imgHeightNum += 1
+                objHeightNum = imgHeightNum / magNum
+            if objHeightNum <= 0:
+                objHeightNum = 1
+                imgHeightNum = magNum * objHeightNum
         elif pointIn(click, magDownBox):
-            magNum -= 1
-            imgHeightNum = magNum * objHeightNum
+            if magNum - 1 == 0:
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                magNum -= 1
+                imgHeightNum = magNum * objHeightNum
         elif pointIn(click, magUpBox):
-            magNum += 1
-            imgHeightNum = magNum * objHeightNum
+            if magNum + 1 == 0:
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                magNum += 1
+                imgHeightNum = magNum * objHeightNum
         elif pointIn(click, objDistBox):
             objDistText.undraw()
             objDistEnter.draw(win)
             while objDistEnter.getText() == "":
                 win.checkMouse()
             win.getMouse()
-            objDistNum = float(objDistEnter.getText())
+            if float(objDistEnter.getText()) <= 0:
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                objDistNum = float(objDistEnter.getText())
+                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
+                imgDistNum = 1 / imgDistNum
+                focDistNum = (1 / objDistNum) + (1 / imgDistNum)
             objDistEnter.undraw()
             objDistText.draw(win)
-            imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-            imgDistNum = 1 / imgDistNum
-            focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
-                focDistNum = 1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
-                focDistNum = -1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            focDistNum = round(1 / focDistNum, 3)
         elif pointIn(click, imgDistBox):
             imgDistText.undraw()
             imgDistEnter.draw(win)
             while imgDistEnter.getText() == "":
                 win.checkMouse()
             win.getMouse()
-            imgDistNum = float(imgDistEnter.getText())
+            if (1 / focDistNum) - (1 / float(imgDistEnter.getText())) or float(imgDistEnter.getText()) == 0:
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                imgDistNum = float(imgDistEnter.getText())
+                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
+                objDistNum = 1 / objDistNum
+                focDistNum = (1 / objDistNum) + (1 / imgDistNum)
             imgDistEnter.undraw()
             imgDistText.draw(win)
-            objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-            objDistNum = 1 / objDistNum
-            focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
-                focDistNum = 1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
-                focDistNum = -1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
-            focDistNum = round(1 / focDistNum, 3)
         elif pointIn(click, focDistBox):
             focDistText.undraw()
             focDistEnter.draw(win)
             while focDistEnter.getText() == "":
                 win.checkMouse()
             win.getMouse()
-            focDistNum = float(focDistEnter.getText())
-            if (focDistNum <= 0 and (choice == 1 or choice == 3)):
-                focDistNum = 1
+            if ((float(focDistEnter.getText()) <= 0 and (choice == 1 or choice == 3)) or (float(focDistEnter.getText()) >= 0 and (choice == 2 or choice == 4))):
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                focDistNum = float(focDistEnter.getText())
                 imgDistNum = (1 / focDistNum) - (1 / objDistNum)
                 imgDistNum = 1 / imgDistNum
                 objDistNum = (1 / focDistNum) - (1 / imgDistNum)
                 objDistNum = 1 / objDistNum
-            elif (focDistNum >= 0 and (choice == 2 or choice == 4)):
-                focDistNum = -1
-                imgDistNum = (1 / focDistNum) - (1 / objDistNum)
-                imgDistNum = 1 / imgDistNum
-                objDistNum = (1 / focDistNum) - (1 / imgDistNum)
-                objDistNum = 1 / objDistNum
+            focDistEnter.undraw()
+            focDistText.draw(win)
         elif pointIn(click, objHeightBox):
             objHeightText.undraw()
             objHeightEnter.draw(win)
             while objHeightEnter.getText() == "":
                 win.checkMouse()
             win.getMouse()
-            objHeightNum = float(objHeightEnter.getText())
+            if float(objHeightEnter.getText()) <= 0:
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                objHeightNum = float(objHeightEnter.getText())
+                imgHeightNum = magNum * objHeightNum
             objHeightEnter.undraw()
             objHeightText.draw(win)
-            imgHeightNum = magNum * objHeightNum
         elif pointIn(click, imgHeightBox):
             imgHeightText.undraw()
             imgHeightEnter.draw(win)
             while imgHeightEnter.getText() == "":
                 win.checkMouse()
             win.getMouse()
-            imgHeightNum = float(imgHeightEnter.getText())
+            if float(imgHeightEnter.getText()) / magNum <= 0 or float(imgHeightEnter.getText()) == 0:
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                imgHeightNum = float(imgHeightEnter.getText())
+                objHeightNum = imgHeightNum / magNum
             imgHeightEnter.undraw()
             imgHeightText.draw(win)
-            objHeightNum = imgHeightNum / magNum
         elif pointIn(click, magBox):
             magText.undraw()
             magEnter.draw(win)
             while magEnter.getText() == "":
                 win.checkMouse()
             win.getMouse()
-            magNum = float(magEnter.getText())
+            if float(magEnter.getText()) == 0:
+                invalText.draw(win)
+                win.getMouse()
+                invalText.undraw()
+            else:
+                magNum = float(magEnter.getText())
+                imgHeightNum = magNum * objHeightNum
+            if objHeightNum <= 0:
+                objHeightNum = 1
+                imgHeightNum = magNum * objHeightNum
             magEnter.undraw()
             magText.draw(win)
-            imgHeightNum = magNum * objHeightNum
         objDistNum = round(objDistNum, 3)
         imgDistNum = round(imgDistNum, 3)
         focDistNum = round(focDistNum, 3)
