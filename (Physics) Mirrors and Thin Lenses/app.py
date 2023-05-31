@@ -77,21 +77,24 @@ def mirrorLens():
     objDistDownBox = Rectangle(Point(5, 60), Point(55, 85))
     objDistUpBox = Rectangle(Point(55, 60), Point(105, 85))
     objDistTitle = Text(Point(55,100),"p")
-    imgDistNum = -15
-    imgDistBox = Rectangle(Point(110, 5), Point(210, 55))
-    imgDistText = Text(Point(160, 30), imgDistNum)
-    imgDistEnter = Entry(Point(160, 30), 10)
-    imgDistDownBox = Rectangle(Point(110, 60), Point(160, 85))
-    imgDistUpBox = Rectangle(Point(160, 60), Point(210, 85))
-    imgDistTitle = Text(Point(160,100),"q")
-    focDistNum = (1 / objDistNum) + (1 / imgDistNum)
-    focDistNum = round(1 / focDistNum, 3)
+    if choice == 1 or choice == 3:
+        focDistNum = 30
+    if choice == 2 or choice == 4:
+        focDistNum = -30
     focDistBox = Rectangle(Point(215, 5), Point(315, 55))
     focDistText = Text(Point(265, 30), focDistNum)
     focDistEnter = Entry(Point(265, 30), 10)
     focDistDownBox = Rectangle(Point(215, 60), Point(265, 85))
     focDistUpBox = Rectangle(Point(265, 60), Point(315, 85))
     focDistTitle = Text(Point(265,100),"f")
+    imgDistNum = (1-focDistNum) - (1-objDistNum)
+    imgDistNum = round(1 / imgDistNum, 3)
+    imgDistBox = Rectangle(Point(110, 5), Point(210, 55))
+    imgDistText = Text(Point(160, 30), imgDistNum)
+    imgDistEnter = Entry(Point(160, 30), 10)
+    imgDistDownBox = Rectangle(Point(110, 60), Point(160, 85))
+    imgDistUpBox = Rectangle(Point(160, 60), Point(210, 85))
+    imgDistTitle = Text(Point(160,100),"q")
     objHeightNum = 5
     objHeightBox = Rectangle(Point(320, 5), Point(420, 55))
     objHeightText = Text(Point(370, 30), objHeightNum)
